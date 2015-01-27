@@ -1,3 +1,16 @@
 <div>
     <h1>My wishlist items</h1>
+    <button>Add New Wish Item</button>
+    <div>
+        <form>
+            Name <input type="text"><br>
+            Description <br>
+            <textarea></textarea>
+            <br/>
+            Imagen: <input type="file" on-read-file="vm.showContent($fileContent)" />
+            <br/><img src="{{vm.fileTem}}" height="60"/>
+            <input type="submit" value="Add Wish"/>
+            <input type="button" value="Cancel"/>
+        </form>
+    </div>
 </div>

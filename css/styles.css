@@ -1,0 +1,22 @@
+.hide {
+    display: none;
+}
+
+.div-error {
+    background-color: #2c0909;
+    opacity: 0.7;
+    position : fixed;
+    top: 0;
+    left: 0;
+    font-size: 3em;
+    color:white;
+    text-align: center;
+    width: 100%
+}
+
+
+/*@media screen and (max-width: 400px) {
+    body {
+        background-color: lightblue;
+    }
+} */

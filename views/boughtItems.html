@@ -1,3 +1,14 @@
 <div>
     <h1>My bought items</h1>
+    <div>
+         <div>Search <input type="text" ng-model="vm.searchQuery"></div>
+            <div ng-repeat="wish in vm.wishes|filter:{status:1, name : vm.searchQuery} ">
+                <div>{{wish.name}}  (<span>{{wish.price|currency}}</span>)</div>
+                <div><img src="{{wish.image}}" height="100" ng-click="vm.openImg($event)"/></div>
+                <div>Create: {{wish.createDate|timeago}}</div>
+                <div ng-class="{hide: wish.editDate==undefined}">Edit: {{wish.editDate|timeago}}</div>
+                <div>Purchased {{wish.purchasedDate|timeago}}</div>
+                <div>{{wish.description}} </div> 
+            </div>
+        </div>
 </div>

@@ -2,15 +2,27 @@
     <h1>My wishlist items</h1>
     <button>Add New Wish Item</button>
     <div>
-        <form>
-            Name <input type="text"><br>
+        <form ng-submit="vm.addNewWish()">
+            Name <input type="text" ng-model="vm.newWishTemp.name" required> <br>
+            Precio <input type="number" ng-model="vm.newWishTemp.price" required> <br>
             Description <br>
-            <textarea></textarea>
+            <textarea ng-model="vm.newWishTemp.description" required></textarea>
             <br/>
-            Imagen: <input type="file" on-read-file="vm.showContent($fileContent)" />
-            <br/><img src="{{vm.fileTem}}" height="60"/>
-            <input type="submit" value="Add Wish"/>
-            <input type="button" value="Cancel"/>
+            Imagen: <input type="file" on-read-file="vm.showContent($fileContent)" required>
+            <br/><img src="{{vm.newWishTemp.image}}" height="60" >
+            <input type="submit" value="Add Wish"/><input type="button" value="Cancel"/>
         </form>
+         <h1>Budget Limit ({{vm.budgetLimit|currency}})</h1>
+        <div>asdf
+            <div ng-repeat="wish in vm.wishs|filter:{status:0} ">
+                <div>{{wish.name}}  (<span>{{wish.price|currency}}</span>)</div>
+                <div><img src="{{wish.image}}" height="100" ng-click="vm.openImg($event)"/></div>
+                <div>Create: {{wish.createDate|timeago}}</div>
+                <div>{{wish.description}} </div> 
+                <div>
+                    <button ng-click="vm.buy($event, wish)">Buy</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

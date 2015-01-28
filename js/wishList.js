@@ -205,26 +205,6 @@
     
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="create Animation reveal-animation">
-//    wishListApp.animation('.reveal-animation', function() {
-//    return {
-//    enter: function(element, done) {
-////      element.css('display', 'none');
-//      element.fadeIn(300, done);
-//      return function() {
-//        element.stop();
-//      }
-//    },
-//    leave: function(element, done) {
-////      element.fadeOut(300, done)
-//      return function() {
-//        element.stop();
-//      }
-//    }
-//  }
-//})
-    //</editor-fold>
-
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Controller">

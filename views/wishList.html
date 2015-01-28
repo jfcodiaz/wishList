@@ -1,31 +1,35 @@
 <div>
     <h1>My wishlist items</h1>
-    <button ng-click="vm.showWishForm()">Add New Wish Item</button>
+    <button ng-click="vm.showWishForm()" class="sprites add-new-wish">Add New Wish Item</button>
     <div>
         <form ng-submit="vm.addNewWish()" class="wishForm" style="display: none">
-            Name <input type="text" ng-model="vm.newWishTemp.name" required> <br>
-            Precio <input type="number" ng-model="vm.newWishTemp.price" required> <br>
-            Description <br>
-            <textarea ng-model="vm.newWishTemp.description" required></textarea>
-            <br/>
-            Imagen: <input type="file" on-read-file="vm.showContent($fileContent)" required>
-            <br/><img src="{{vm.newWishTemp.image}}" ng-class="{hide:vm.newWishTemp.image==''}" height="60" >
-            <input type="submit" value="Add Wish"/><input type="button" value="Cancel"/>
+            <h2>{{vm.formTitle}}</h2>
+            <div><label>Name:</label><input type="text" ng-model="vm.newWishTemp.name" required class="text"> </div>
+            <div><label>Price:</label><input type="number" ng-model="vm.newWishTemp.price" required class="text"> </div>
+            <div>Description </div>
+            <div> <textarea ng-model="vm.newWishTemp.description" required></textarea></div>
+            <div><input type="file" on-read-file="vm.showContent($fileContent)"></div>
+            <div><img src="{{vm.newWishTemp.image}}" ng-class="{hide:vm.newWishTemp.image==''}" ></div>
+            <input type="button" value="Update Wish" ng-click="vm.updateWish()" ng-class="{hide:vm.formMode===0}"/> 
+            <input type="submit" value="Add Wish" ng-class="{hide:vm.formMode===1}"/>
+            <input type="button" value="Cancel" ng-click="vm.hideForm()"/>
         </form>
-        <div>
+        <div class="info">
             My Budget Limit: {{vm.budgetLimit|currency}},
-            I spent {{vm.spentMoney|currency}}
+            I spent <span class="spent">{{vm.spentMoney|currency}}</span>
         </div>
         <div>
             <div>Search <input type="text" ng-model="vm.searchQuery"></div>
-            <div ng-repeat="wish in vm.wishes|filter:{status:0, name : vm.searchQuery} ">
+            <div ng-repeat="wish in vm.wishes|filter:{status:0, name : vm.searchQuery}  | orderBy:'createDate':true" class="wish">
                 <div>{{wish.name}}  (<span>{{wish.price|currency}}</span>)</div>
                 <div><img src="{{wish.image}}" height="100" ng-click="vm.openImg($event)"/></div>
-                <div>Create: {{wish.createDate|timeago}}</div>
+                <div class="wish-created">Create: {{wish.createDate|timeago}}</div>
+                <div ng-class="{hide: wish.editDate==undefined}" class="wish-update">Edit: {{wish.editDate|timeago}}</div>
                 <div>{{wish.description}} </div> 
                 <div>
-                    <button ng-click="vm.buy($event, wish)">Buy</button>
-                    <button ng-click="vm.edit($event, wish)">Edit</button>
+                    <button ng-click="vm.buy($event, wish)" class="sprites buy-wish">Buy</button>
+                    <button ng-click="vm.edit($event, wish)"  class="sprites edit-wish">Edit</button>
+                    
                 </div>
             </div>
         </div>

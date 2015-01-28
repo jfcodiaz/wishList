@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Angular WishList</title>
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body ng-controller="mainCtrl as vm">
         <nav>
